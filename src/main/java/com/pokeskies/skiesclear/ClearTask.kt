@@ -26,7 +26,7 @@ class ClearTask(
         if (broadcast && (clearConfig.messages.clear.isNotEmpty() || clearConfig.sounds.clear != null)) {
             for (player in server.playerList.players.filter { shouldInform(it) }) {
                 for (line in clearConfig.messages.clear) {
-                    player.sendMessage(Utils.deserializeText(parsePlaceholders(line, total, totals)))
+                    player.sendSystemMessage(Utils.deserializeText(parsePlaceholders(line, total, totals)))
                 }
                 if (clearConfig.sounds.clear != null && clearConfig.sounds.clear.sound.isNotEmpty()) {
                     player.playNotifySound(
@@ -46,7 +46,7 @@ class ClearTask(
         if (warningMessage != null) {
             for (player in server.playerList.players.filter { shouldInform(it) }) {
                 for (line in warningMessage) {
-                    player.sendMessage(
+                    player.sendSystemMessage(
                         Utils.deserializeText(
                             line.replace(
                                 "%time_remaining%".toRegex(),

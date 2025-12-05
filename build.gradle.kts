@@ -1,8 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-    id("org.jetbrains.kotlin.jvm").version("2.0.0")
-    id("quiet-fabric-loom") version "1.7-SNAPSHOT"
+    id("quiet-fabric-loom") version ("1.10-SNAPSHOT")
+    kotlin("jvm") version ("2.2.0")
 }
 
 val modId = project.properties["mod_id"].toString()
@@ -30,6 +30,8 @@ repositories {
     }
     maven("https://oss.sonatype.org/content/repositories/snapshots")
     maven("https://maven.impactdev.net/repository/development/")
+    maven("https://repo.lucko.me")
+    maven("https://maven.pokeskies.com/releases/")
 }
 
 loom {
@@ -66,7 +68,7 @@ dependencies {
         include(it)
     }
 
-    modImplementation("com.cobblemon:fabric:1.6.1+1.21.1")
+    modImplementation("com.cobblemon:fabric:1.7.0+1.21.1")
 
     modImplementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 }

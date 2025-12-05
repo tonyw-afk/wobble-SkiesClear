@@ -58,7 +58,7 @@ class BaseCommand {
             for ((clearId, clearConfig) in clearEntries) {
                 val clearTask = SkiesClear.INSTANCE.clearManager.getClearTask(clearId) ?: continue
                 for (line in clearConfig.messages.info) {
-                    ctx.source.sendMessage(Utils.deserializeText(
+                    ctx.source.sendSystemMessage(Utils.deserializeText(
                         line.replace("%time_remaining%", Utils.getFormattedTime(clearTask.getTimer().toLong()))
                     ))
                 }
